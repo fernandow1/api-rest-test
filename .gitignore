@@ -1,0 +1,17 @@
+## Ignore node_module
+node_modules/*
+
+## Enviroment file
+.env
+
+## Dist
+dist/*
+
+## Package-lock
+package-lock.json
+
+## DockerFile
+DockerFile
+
+## Docker compose
+docker-compose.yml
