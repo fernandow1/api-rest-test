@@ -1,6 +1,7 @@
 
 import { Request, Response } from "express";
 import { ActorRepository } from "../../domain/repository/actor.repository";
+import { GetActors } from "../../domain/uses-cases/actor/get-actors";
 
 export class ActorsController {
 
@@ -9,8 +10,10 @@ export class ActorsController {
     ) {}
 
     public getActors = async (req: Request, res: Response) => {
-        const actors = await this.repository.getAll();
-        return res.json(actors);
+        new GetActors( this.repository )
+        .execute()
+        .then( actors => res.json(actors) )
+        .catch( error => res.status(400).json({ error }) );
     }
 }
 

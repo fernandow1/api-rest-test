@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import compression from 'compression'
 
 interface Options {
     port: number;
@@ -20,6 +21,7 @@ export class Server {
     async start(): Promise<void> {
         //* Middlewares
         this.app.use(express.json());
+        this.app.use(compression())
 
         //* Routes
         this.app.use(this.routes);
